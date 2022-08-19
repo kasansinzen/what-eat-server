@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { RepastService } from './repast.service';
 
-@Module({})
+@Module({
+  providers: [RepastService]
+})
 export class RepastModule {}

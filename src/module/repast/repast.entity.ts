@@ -1,4 +1,4 @@
-import { RepastType } from "@module/repast/repast.enum";
+import { RepastStatus } from "@module/repast/repast.enum";
 import { Column, CreateDateColumn, Entity, ObjectIdColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
@@ -16,7 +16,7 @@ export class Repast {
   shedule: Date;
 
   @Column()
-  repast: RepastType;
+  repast: RepastStatus;
 
   @CreateDateColumn()
   createdAt: Date;
