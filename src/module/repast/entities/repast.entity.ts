@@ -13,14 +13,20 @@ export class Repast {
   foods: string[];
 
   @Column()
-  shedule: Date;
+  sheduleDate: Date;
 
-  @Column()
-  repast: RepastStatus;
+  @Column({default: RepastStatus.BREAKFAST})
+  repastStatus: RepastStatus;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  constructor(foods?: string[], sheduleDate?: Date, repastStatus?: RepastStatus) {
+    this.foods = foods || [];
+    this.sheduleDate = sheduleDate || new Date;
+    this.repastStatus = repastStatus || RepastStatus.BREAKFAST;
+  }
 }

@@ -1,19 +1,20 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { FoodType } from "../food/food.type";
+import { FoodModel } from "@module/food/models/food.type";
+import { RepastStatus } from "../repast.enum";
 
 @ObjectType()
-export class RepastType {
+export class RepastModel {
   @Field(type => ID)
   id: string;
 
-  @Field(type => FoodType)
+  @Field(type => [FoodModel])
   foods: string[];
 
   @Field()
-  shedule: Date;
+  sheduleDate: Date;
 
   @Field()
-  repast: RepastType;
+  repastStatus: RepastStatus;
 
   @Field()
   createdAt: Date;

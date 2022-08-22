@@ -1,5 +1,6 @@
-import { Food } from '@module/food/food.entity';
-import { Repast } from '@module/repast/repast.entity';
+import { createMongoDb } from '@core/utils/createMongoDb';
+import { Food } from '@module/food/entities/food.entity';
+import { Repast } from '@module/repast/entities/repast.entity';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -11,16 +12,7 @@ import { RepastModule } from './module/repast/repast.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      url: "mongodb://localhost/what-eat",
-      synchronize: true,
-      useUnifiedTopology: true,
-      entities: [
-        Food,
-        Repast
-      ]
-    }),
+    createMongoDb,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,

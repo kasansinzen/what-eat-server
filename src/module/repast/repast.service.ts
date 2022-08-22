@@ -1,19 +1,27 @@
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Repast } from './repast.entity';
+import { Repast } from './entities/repast.entity';
 import { v4 as uuid} from 'uuid';
+import { SaveRepastInput } from './dto/save-repast.input';
 
 @Injectable()
 export class RepastService {
 
   constructor(
-    @InjectRepository(Repast) private repastRepository: Repository<Repast>
+    @InjectRepository(Repast) private repastRepository: Repository<Repast>,
   ) { }
 
-  createRepast() {
+  async createRepast(saveRepastInput: SaveRepastInput) {
+    console.log('saveRepastInput', saveRepastInput)
+    const {foods, repastStatus, sheduleDate} = saveRepastInput;
     const repast = this.repastRepository.create({
       id: uuid(),
-      
-    })
+      foods,
+      sheduleDate,
+      repastStatus
+    });
+    await this.repastRepository.save(repast);
+    return repast;
   }
 }
