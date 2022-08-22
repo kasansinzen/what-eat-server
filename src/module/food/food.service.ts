@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Food } from './entities/food.entity';
 import { v4 as uuid } from 'uuid';
+import { SaveFoodInput } from './dto/save-food.input';
 
 @Injectable()
 export class FoodService {
@@ -11,13 +12,14 @@ export class FoodService {
     @InjectRepository(Food) private foodRepository: Repository<Food>
   ) { }
 
-  createFood(title: string) {
+  async createFood(saveFoodInput: SaveFoodInput) {
+    const { title } = saveFoodInput;
     const food = this.foodRepository.create({
       id: uuid(),
       title
     });
-
-    return this.foodRepository.save(food);
+    await this.foodRepository.save(food);
+    return food;
   }
 
   async getMany(ids: string[]) {

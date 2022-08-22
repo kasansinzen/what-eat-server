@@ -13,7 +13,6 @@ export class RepastService {
   ) { }
 
   async createRepast(saveRepastInput: SaveRepastInput) {
-    console.log('saveRepastInput', saveRepastInput)
     const {foods, repastStatus, sheduleDate} = saveRepastInput;
     const repast = this.repastRepository.create({
       id: uuid(),

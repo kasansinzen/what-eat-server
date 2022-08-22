@@ -5,8 +5,7 @@ import { Repository } from 'typeorm';
 import { Repast } from './entities/repast.entity';
 import { RepastService } from './repast.service';
 
-const testSaveRepast = new Repast();
-console.log('testSaveRepast', testSaveRepast);
+const requestSaveRepast = new Repast()
 
 describe('RepastService', () => {
   let service: RepastService;
@@ -16,11 +15,13 @@ describe('RepastService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         RepastService,
-        // {
-        //   provide: getRepositoryToken(Repast),
-        //   useValue: {
-        //   }
-        // },
+        {
+          provide: getRepositoryToken(Repast),
+          useValue: {
+            create: jest.fn().mockResolvedValue(requestSaveRepast),
+            save: jest.fn()
+          }
+        },
       ],
       imports: [
         createMongoDb,
@@ -29,7 +30,7 @@ describe('RepastService', () => {
     }).compile();
 
     service = module.get<RepastService>(RepastService);
-    // repository = module.get<Repository<Repast>>(getRepositoryToken(Repast));
+    repository = module.get<Repository<Repast>>(getRepositoryToken(Repast));
   });
 
   it('should be defined', () => {
@@ -37,11 +38,8 @@ describe('RepastService', () => {
   });
 
   describe('Create Repast', () => {
-
     it('should be create new repast', () => {
-      service.createRepast(testSaveRepast);
-      expect(true).toEqual(true);
-      // expect(service.createRepast(testSaveRepast)).resolves.toEqual(testSaveRepast);
+      expect(service.createRepast(requestSaveRepast)).resolves.toEqual(requestSaveRepast);
     });
   });
 });

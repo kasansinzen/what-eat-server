@@ -16,4 +16,8 @@ export class Food {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  constructor(title?: string) {
+    this.title = title || "";
+  }
 }
