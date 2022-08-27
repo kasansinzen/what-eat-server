@@ -43,8 +43,17 @@ describe('FoodService', () => {
     expect(service).toBeDefined();
   });
 
+  describe("Get Food", () => {
+    it.todo("should be get food by id");
+    it.todo("should be get all foods");
+  });
+
+  describe("Search Food", () => {
+    it.todo("should be search and get foods");
+  });
+
   describe("Create Food", () => {
-    it('should be create new food', async () => {
+    it("should be create new food", async () => {
       const food = await service.createFood(requestSaveFood);
       expect(food).toEqual(requestSaveFood);
     });

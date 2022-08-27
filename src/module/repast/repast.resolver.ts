@@ -19,7 +19,6 @@ export class RepastResolver {
 
 	@ResolveField('foods', returns => [FoodModel])
 	async foods(@Parent() repast: RepastModel) {
-		console.log(repast.foods, await this.foodService.getMany(repast.foods));
 		return this.foodService.getMany(repast.foods);
 	}
 }

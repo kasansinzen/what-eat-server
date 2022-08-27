@@ -5,9 +5,9 @@ export class SearchFoodInput {
   @Field()
   keyword: string;
 
-  @Field(() => Int)
+  @Field(() => Int, {nullable: true})
   limit: number;
 
-  @Field(() => Int)
+  @Field(() => Int, {nullable: true})
   offset: number;
 }

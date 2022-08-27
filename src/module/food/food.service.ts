@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, MongoRepository, Repository } from 'typeorm';
 import { Food } from './entities/food.entity';
 import { v4 as uuid } from 'uuid';
 import { SaveFoodInput } from './dto/save-food.input';
@@ -10,19 +10,21 @@ import { SearchFoodInput } from './dto/search-food.input';
 export class FoodService {
 
   constructor(
-    @InjectRepository(Food) private foodRepository: Repository<Food>
+    @InjectRepository(Food) private foodRepository: MongoRepository<Food>
   ) { }
 
   getFoods(): Promise<Food[]> {
     return this.foodRepository.find();
   }
 
-  searchFodds(searchFoodInput: SearchFoodInput): Promise<Food[]> {
+  searchFoods(searchFoodInput: SearchFoodInput): Promise<Food[]> {
     const { keyword, limit, offset } = searchFoodInput;
+
+    const newKeyword = keyword || "";
     const newLimit = limit || 20;
     const newOffset = offset || 0;
 
-    return this.foodRepository.find();
+    return this.foodRepository.find({where: {title: {$regex: newKeyword}}, limit: newLimit, offset: newOffset} as any);
   }
 
   async createFood(saveFoodInput: SaveFoodInput): Promise<Food> {
@@ -36,6 +38,6 @@ export class FoodService {
   }
 
   async getMany(ids: string[]): Promise<Food[]> {
-    return this.foodRepository.find({ where: { id: { $in: ids } as any } });
+    return this.foodRepository.find({ where: {id: {$in: ids}} } as any);
   }
 }
