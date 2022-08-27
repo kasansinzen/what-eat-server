@@ -9,6 +9,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FoodModule } from './module/food/food.module';
 import { RepastModule } from './module/repast/repast.module';
+import { ResponseService } from './core/services/http/response/response.service';
 
 @Module({
   imports: [
@@ -21,6 +22,6 @@ import { RepastModule } from './module/repast/repast.module';
     RepastModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ResponseService],
 })
 export class AppModule {}
