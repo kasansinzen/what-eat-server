@@ -10,6 +10,10 @@ import { ResponseService } from '@core/services/http/response/response.service';
   imports: [TypeOrmModule.forFeature([Food])],
   exports: [FoodService],
   controllers: [FoodController],
-  providers: [FoodService, FoodResolver, ResponseService],
+  providers: [
+    FoodService,
+    FoodResolver,
+    ResponseService,
+  ],
 })
 export class FoodModule {}

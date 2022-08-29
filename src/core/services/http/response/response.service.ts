@@ -1,4 +1,4 @@
-import { HttpStatusCode } from '@core/enums/status-code.enum';
+import { EHttpStatusCode } from '@core/enums/status-code.enum';
 import { Injectable } from '@nestjs/common';
 
 export interface IHttpResponse {
@@ -21,8 +21,8 @@ export class ResponseService {
 
   constructor() { }
 
-  httpStatusCode(status: keyof HttpStatusCode): HttpStatusCode {
-    return HttpStatusCode[status];
+  httpStatusCode(status: keyof typeof EHttpStatusCode): EHttpStatusCode {
+    return EHttpStatusCode[status];
   }
 
   httpResponse(data: IHttpResponse): IHttpResponse {

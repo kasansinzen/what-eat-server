@@ -6,6 +6,7 @@ import { RepastController } from './repast.controller';
 import { RepastResolver } from './repast.resolver';
 import { FoodService } from '@module/food/food.service';
 import { FoodModule } from '@module/food/food.module';
+import { ResponseService } from '@core/services/http/response/response.service';
 
 @Module({
   imports: [
@@ -13,7 +14,11 @@ import { FoodModule } from '@module/food/food.module';
     FoodModule
   ],
   controllers: [RepastController],
-  providers: [RepastService, RepastResolver],
+  providers: [
+    RepastService,
+    RepastResolver,
+    ResponseService
+  ],
 
 })
 export class RepastModule {}
