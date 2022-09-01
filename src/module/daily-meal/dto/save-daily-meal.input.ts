@@ -1,12 +1,12 @@
 import { Field, ID, InputType } from "@nestjs/graphql";
 import { IsDateString, IsUUID } from "class-validator";
-import { RepastStatus } from "../repast.enum";
+import { MealStatus } from "../daily-meal.enum";
 
 @InputType()
-export class SaveRepastDailyInput {
+export class SaveDailyMealInput {
   
   @IsUUID("all", { each: true })
-  @Field(type => [String], { defaultValue: [] })
+  @Field(type => [ID, String], { defaultValue: [] })
   foods: string[];
 
   @IsDateString()
@@ -14,5 +14,5 @@ export class SaveRepastDailyInput {
   sheduleDate: Date;
 
   @Field()
-  repastStatus: RepastStatus;
+  mealStatus: MealStatus;
 }

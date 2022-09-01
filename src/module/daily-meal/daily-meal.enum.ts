@@ -1,4 +1,4 @@
-export enum RepastStatus {
+export enum MealStatus {
   BREAKFAST = "BREAKFAST",
   LUNCH = "LUNCH",
   DINNER = "DINNER",

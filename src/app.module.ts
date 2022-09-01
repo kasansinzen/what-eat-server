@@ -1,6 +1,6 @@
 import { createMongoDb } from '@core/utils/createMongoDb';
 import { Food } from '@module/food/entities/food.entity';
-import { Repast } from '@module/repast/entities/repast.entity';
+import { DailyMeal } from '@module/daily-meal/entities/daily-meal.entity';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FoodModule } from './module/food/food.module';
-import { RepastModule } from './module/repast/repast.module';
+import { DailyMealModule } from './module/daily-meal/daily-meal.module';
 import { ResponseService } from './core/services/http/response/response.service';
 
 @Module({
@@ -19,7 +19,7 @@ import { ResponseService } from './core/services/http/response/response.service'
       autoSchemaFile: true,
     }),
     FoodModule,
-    RepastModule
+    DailyMealModule,
   ],
   controllers: [AppController],
   providers: [AppService, ResponseService],

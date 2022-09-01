@@ -1,8 +1,8 @@
-import { RepastStatus } from "@module/repast/repast.enum";
+import { MealStatus } from "@module/daily-meal/daily-meal.enum";
 import { Column, CreateDateColumn, Entity, ObjectIdColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class Repast {
+export class DailyMeal {
   @ObjectIdColumn()
   _id: string;
 
@@ -15,8 +15,8 @@ export class Repast {
   @Column()
   sheduleDate: Date;
 
-  @Column({default: RepastStatus.BREAKFAST})
-  repastStatus: RepastStatus;
+  @Column({default: MealStatus.BREAKFAST})
+  mealStatus: MealStatus;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -24,9 +24,9 @@ export class Repast {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  constructor(foods?: string[], sheduleDate?: Date, repastStatus?: RepastStatus) {
+  constructor(foods?: string[], sheduleDate?: Date, mealStatus?: MealStatus) {
     this.foods = foods || [];
     this.sheduleDate = sheduleDate || new Date;
-    this.repastStatus = repastStatus || RepastStatus.BREAKFAST;
+    this.mealStatus = mealStatus || MealStatus.BREAKFAST;
   }
 }
