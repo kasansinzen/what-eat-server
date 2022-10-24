@@ -9,11 +9,11 @@ export class DailyMeal {
   @PrimaryColumn()
   id: string;
 
-  @Column()
+  @Column({default: []})
   foods: string[];
 
   @Column()
-  sheduleDate: Date;
+  scheduleDate: Date;
 
   @Column({default: MealStatus.BREAKFAST})
   mealStatus: MealStatus;
@@ -24,9 +24,9 @@ export class DailyMeal {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  constructor(foods?: string[], sheduleDate?: Date, mealStatus?: MealStatus) {
+  constructor(foods?: string[], scheduleDate?: Date, mealStatus?: MealStatus) {
     this.foods = foods || [];
-    this.sheduleDate = sheduleDate || new Date;
+    this.scheduleDate = scheduleDate || new Date;
     this.mealStatus = mealStatus || MealStatus.BREAKFAST;
   }
 }

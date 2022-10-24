@@ -7,11 +7,11 @@ export class DailyMealModel {
   @Field(type => ID)
   id: string;
 
-  @Field(type => [FoodModel])
+  @Field(type => [String])
   foods: string[];
 
   @Field()
-  sheduleDate: Date;
+  scheduleDate: Date;
 
   @Field()
   mealStatus: MealStatus;

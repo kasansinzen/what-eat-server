@@ -3,15 +3,8 @@ import { IsDateString, IsUUID } from "class-validator";
 import { MealStatus } from "../daily-meal.enum";
 
 @InputType()
-export class SaveDailyMealInput {
+export class UpdateFoodsDailyMealInput {
   
   @Field(type => [String], { defaultValue: [] })
   foods: string[];
-
-  @IsDateString()
-  @Field()
-  scheduleDate: Date;
-
-  @Field()
-  mealStatus: MealStatus;
 }
