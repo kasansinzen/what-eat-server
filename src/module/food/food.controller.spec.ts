@@ -1,3 +1,4 @@
+import { ResponseService } from '@core/services/http/response/response.service';
 import { createMongoDb } from '@core/utils/createMongoDb';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,7 +12,7 @@ describe('FoodController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [FoodController],
-      providers: [FoodService],
+      providers: [FoodService, ResponseService],
       imports: [
         createMongoDb,
         TypeOrmModule.forFeature([Food])

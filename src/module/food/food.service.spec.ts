@@ -1,3 +1,4 @@
+import { ResponseService } from '@core/services/http/response/response.service';
 import { createMongoDb } from '@core/utils/createMongoDb';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm';
@@ -20,6 +21,7 @@ describe('FoodService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         FoodService,
+        ResponseService,
         {
           provide: getRepositoryToken(Food),
           useValue: {
@@ -36,7 +38,7 @@ describe('FoodService', () => {
     }).compile();
 
     service = module.get<FoodService>(FoodService);
-    repository = module.get<Repository<Food>>(getRepositoryToken(Food));
+    repository = module.get(getRepositoryToken(Food));
   });
 
   it('should be defined', () => {
