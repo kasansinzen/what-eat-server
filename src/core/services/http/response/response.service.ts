@@ -25,7 +25,7 @@ export class ResponseService {
     return EHttpStatusCode[status];
   }
 
-  httpResponse(data: IHttpResponse): IHttpResponse {
+  httpResponse(data: IHttpResponse = {}): IHttpResponse {
     return {...this.defaultHttpResponse, ...data};
   }
 }

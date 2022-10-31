@@ -1,4 +1,3 @@
-import { Food } from "@module/food/entities/food.entity";
 import { DailyMeal } from "@module/daily-meal/entities/daily-meal.entity";
 import { TypeOrmModule } from "@nestjs/typeorm"
 
@@ -8,7 +7,6 @@ export const createMongoDb = TypeOrmModule.forRoot({
   synchronize: true,
   useUnifiedTopology: true,
   entities: [
-    Food,
     DailyMeal
   ]
 });

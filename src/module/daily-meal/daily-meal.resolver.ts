@@ -1,8 +1,6 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { DailyMealService } from './daily-meal.service';
 import { DailyMealModel } from './models/daily-meal.model';
-import { FoodModel } from '@module/food/models/food.type';
-import { FoodService } from '@module/food/food.service';
 import { SaveDailyMealInput } from './dto/save-daily-meal.input';
 import { GetFoodInput } from './dto/get-food.input';
 import { GetDailyMealInput } from './dto/get-daily-meal.input';
@@ -12,7 +10,6 @@ import { UpdateFoodsDailyMealInput } from './dto/update-foods-daily-meal.input';
 export class DailyMealResolver {
 	constructor(
 		private dailyMealService: DailyMealService,
-		private foodService: FoodService,
 	) { }
 
 	@Query(returns => [DailyMealModel])

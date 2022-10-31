@@ -5,7 +5,6 @@ import { Repository } from 'typeorm';
 import { DailyMeal } from './entities/daily-meal.entity';
 import { DailyMealService } from './daily-meal.service';
 import { MealStatus } from './daily-meal.enum';
-import { Food } from '@module/food/entities/food.entity';
 
 describe('DailyMealService', () => {
   let service: DailyMealService;

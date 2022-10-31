@@ -1,5 +1,4 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { FoodModel } from "@module/food/models/food.type";
 import { MealStatus } from "../daily-meal.enum";
 
 @ObjectType()
