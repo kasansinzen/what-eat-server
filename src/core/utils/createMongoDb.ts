@@ -3,7 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm"
 
 export const createMongoDb = TypeOrmModule.forRoot({
   type: 'mongodb',
-  url: "mongodb+srv://kasansin:PfHTErEIZu95zRl5@cluster-01.lrnlnor.mongodb.net/?retryWrites=true&w=majority",
+  url: "mongodb+srv://kasansin:XNf8j6Q3jRAnAxdO@cluster-01.lrnlnor.mongodb.net/?retryWrites=true&w=majority",
   synchronize: true,
   useUnifiedTopology: true,
   entities: [
